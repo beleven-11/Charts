@@ -258,7 +258,7 @@ open class ViewPortHandler: NSObject
         let height = content.height
 
         let maxTransX = -width * (scaleX - 1.0)
-        transX = min(max(matrix.tx, maxTransX - transOffsetX), transOffsetX)
+        transX = min(max(matrix.tx, maxTransX - transOffsetX), 0)
         
         let maxTransY = height * (scaleY - 1.0)
         transY = max(min(matrix.ty, maxTransY + transOffsetY), -transOffsetY)

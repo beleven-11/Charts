@@ -75,6 +75,9 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     /// If set to true, chart continues to scroll after touch up
     @objc open var dragDecelerationEnabled = true
 
+    /// If set to true, chart will resize viewport width to its bounds
+    @objc open var fitWidthToBounds = true
+    
     /// The object representing the labels on the x-axis
     @objc open internal(set) lazy var xAxis = XAxis()
     
@@ -781,7 +784,13 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
             if ((bounds.size.width != viewPortHandler.chartWidth ||
                 bounds.size.height != viewPortHandler.chartHeight))
             {
-                viewPortHandler.setChartDimens(width: bounds.size.width, height: bounds.size.height)
+                
+                if fitWidthToBounds {
+                    viewPortHandler.setChartDimens(width: bounds.size.width, height: bounds.size.height)
+                } else {
+                    viewPortHandler.setChartDimens(width: viewPortHandler.chartWidth, height: bounds.size.height)
+                    viewPortHandler.setDragOffsetX(viewPortHandler.chartWidth - bounds.width)
+                }
                 
                 // This may cause the chart view to mutate properties affecting the view port -- lets do this
                 // before we try to run any pending jobs on the view port itself
