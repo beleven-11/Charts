@@ -78,6 +78,8 @@ open class AxisBase: ComponentBase
     /// the actual array of entries
     @objc open var entries = [Double]()
     
+    public var useCustomValues: Bool = false
+    
     /// the actual array of values
     @objc open var values = [Double]()
     
