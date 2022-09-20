@@ -78,6 +78,9 @@ open class AxisBase: ComponentBase
     /// the actual array of entries
     @objc open var entries = [Double]()
     
+    /// the actual array of values
+    @objc open var values = [Double]()
+    
     /// axis label entries only used for centered labels
     @objc open var centeredEntries = [Double]()
     
