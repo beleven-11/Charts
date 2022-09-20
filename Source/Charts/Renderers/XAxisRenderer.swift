@@ -69,7 +69,7 @@ open class XAxisRenderer: NSObject, AxisRenderer
         }
         
         if axis.useCustomValues {
-            axis.entries = axis.values
+            axis.entries = axis.values.uniqued().map { $0 }
             return
         }
 
