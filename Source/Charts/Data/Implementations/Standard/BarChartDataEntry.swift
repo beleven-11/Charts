@@ -31,7 +31,7 @@ open class BarChartDataEntry: ChartDataEntry
     }
     
     /// Constructor for normal bars (not stacked).
-    public override init(x: Double, y: Double)
+    public override init(x: Double, y: Double, date: TimeInterval = 0)
     {
         super.init(x: x, y: y)
     }
